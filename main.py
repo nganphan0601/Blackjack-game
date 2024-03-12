@@ -7,7 +7,8 @@ The cards in the list have equal opportunity of being drawn
 Cards are not removed from the deck as they are drawn
 '''
 import random
-
+from replit import clear
+from art import logo
 
 # This function will return a random card from the deck
 def deal_card():
@@ -77,16 +78,9 @@ def final(user_cards, user_score, comp_cards, comp_score):
     return
 
 
-# the game will continue until the user decides to stop
-while True:
-    print("Do you want to play BlackJack? y or n: ")
-    answer = input()
-
-    # if the user doesn't want to play, break the loop
-    if answer == "n":
-        break
-
+def play_game():
     # if the user wants to play, start the game
+    print(logo)
     # deal 2 cards for the user and the computer
     user_cards = []
     comp_cards = []
@@ -101,7 +95,7 @@ while True:
     # if the user or the computer has a blackjack, the game is over, or if the user's score is over 21
     if is_game_over(user_score, comp_score):
         final(user_cards, user_score, comp_cards, comp_score)
-        continue
+        return
 
 
     # if the game is not over, print the user's cards and the computer's first card
@@ -135,6 +129,12 @@ while True:
             # if the game is not over, print the user's cards and keep asking if the user wants to get another card
             else:
                 print(f"Your cards: {user_cards}, current score:{user_score}")
+
+# the game will continue until the user decides to stop
+while input("Do you want to play BlackJack? y or n: ") == "y":  
+    clear()
+    play_game()
+    
 
 
     
