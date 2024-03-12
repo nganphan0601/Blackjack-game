@@ -7,9 +7,19 @@ The cards in the list have equal opportunity of being drawn
 Cards are not removed from the deck as they are drawn
 '''
 import random
-from replit import clear
 from art import logo
+import os
+import platform
 
+def clear_terminal():
+    # Check the operating system
+    os_name = platform.system()
+    if os_name == "Windows":
+        # Windows
+        os.system('cls')
+    else:
+        # Linux and Mac
+        os.system('clear')
 # This function will return a random card from the deck
 def deal_card():
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
@@ -132,7 +142,7 @@ def play_game():
 
 # the game will continue until the user decides to stop
 while input("Do you want to play BlackJack? y or n: ") == "y":  
-    clear()
+    clear_terminal()
     play_game()
     
 
